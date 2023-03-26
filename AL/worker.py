@@ -17,10 +17,10 @@ class CommitteeMember:
         self.model.fit(X_train, y_train, epochs=25, batch_size=64)
 
 def task(args):
-    id,Xtrain,ytrain,Xpool = args
+    id, Xtrain, ytrain, Xpool = args
     committee_member = CommitteeMember()
     Xtr,ytr=sklearn.utils.resample(Xtrain,ytrain,stratify=ytrain)
     #Train committee member on Xtr,ytr
-    committee_member.train(np.asarray(list(Xtr)).astype('float32'),[np.array(xi) for xi in ytr])
+    committee_member.train(np.asarray(list(Xtr)).astype('float32'), np.array([np.array(xi) for xi in ytr]))
     #predict
-    return committee_member.model.predict(Xpool.values)
+    return committee_member.model.predict(np.asarray(list(Xpool.values)).astype('float32'))
