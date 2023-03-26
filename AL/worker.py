@@ -10,8 +10,8 @@ def task(args):
             #fit
     committee_member.train(Xtr.astype(np.float32), ytr)
             #predict
-    ypool_lab.append(committee_member.model.predict(Xpool.values))
-    return ypool_lab
+
+    return committee_member.model.predict(Xpool.values)
 
 class CommitteeMember:
     def __init__(self):
