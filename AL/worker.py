@@ -8,7 +8,7 @@ class CommitteeMember:
     def __init__(self):
         self.model = Sequential()
         self.model.add(Dense(128, input_dim=768*2, activation='relu'))
-        self.model.add(Dense(1, activation='softmax'))
+        self.model.add(Dense(1, activation='sigmoid'))
 
         # Compile the model
         self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
